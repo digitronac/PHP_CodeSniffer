@@ -13,7 +13,7 @@ class RAS_Sniffs_ControlStructures_ControlSignatureSniff extends PEAR_Sniffs_Con
                 'while (...) {EOL',
                 'for (...) {EOL',
                 'if (...)EOL...{',
-                'foreach (...) {EOL',
+                'foreach (...)EOL...{',
                 'EOL...} else if (...) {EOL',
                 '...}EOL...elseEOL...{',
                 'do {EOL',
