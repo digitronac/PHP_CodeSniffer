@@ -10,8 +10,8 @@ class RAS_Sniffs_ControlStructures_ControlSignatureSniff extends PEAR_Sniffs_Con
     {
         return array(
                 'do {EOL...} while (...);EOL',
-                'while (...) {EOL',
-                'for (...) {EOL',
+                'while (...)EOL...{',
+                'for (...)EOL...{',
                 'if (...)EOL...{',
                 'foreach (...)EOL...{',
                 'EOL...} else if (...) {EOL',
