@@ -35,33 +35,28 @@ class PEAR_Tests_Commenting_ClassCommentUnitTest extends AbstractSniffUnitTest
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
         return array(
                 4   => 1,
                 15  => 1,
-                22  => 1,
-                25  => 1,
-                28  => 1,
-                46  => 1,
                 51  => 1,
                 63  => 1,
                 65  => 2,
                 66  => 1,
-                68  => 2,
+                68  => 1,
                 70  => 1,
                 71  => 1,
                 72  => 1,
                 74  => 2,
                 75  => 1,
+                76  => 1,
                 77  => 1,
-                78  => 1,
-                79  => 1,
                 85  => 1,
-                93  => 1,
-                103 => 1,
+                96  => 5,
+                106 => 5,
                );
 
     }//end getErrorList()
@@ -73,7 +68,7 @@ class PEAR_Tests_Commenting_ClassCommentUnitTest extends AbstractSniffUnitTest
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

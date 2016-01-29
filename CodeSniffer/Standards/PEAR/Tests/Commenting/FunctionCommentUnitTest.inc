@@ -125,10 +125,10 @@ class PHP_CodeSniffer_File
      * @param missing
      * @param
      */
-    public function missingDescroption($threeSpaces)
+    public function missingDescription($threeSpaces)
     {
 
-    }//end missingDescroption()
+    }//end missingDescription()
 
 
     /**
@@ -152,15 +152,15 @@ class PHP_CodeSniffer_File
 /**
  * A simple function comment
  *
- * @param string $str The string passed in by reference
+ * @param string &$str The string passed in by reference
+ * @param string $foo  The string passed in by reference
  *
  * @return void
  */
-public function functionOutsideClass(&$str)
+public function functionOutsideClass(&$str, &$foo)
 {
     return;
 }//end functionOutsideClass()
-
 
 function missingCommentOutsideClass()
 {
@@ -247,8 +247,76 @@ class MyClass() {
     /**
      * An abstract function.
      *
-     * @return array(string)
+     * @return string[]
      */
     abstract final protected function myFunction();
 }
-?>
+
+/**
+ * Creates a map of tokens => line numbers for each token.
+ *
+ * @param array  $tokens    The array of tokens to process.
+ * @param object $tokenizer The tokenizer being used to process this file.
+ * @param string $eolChar   The EOL character to use for splitting strings.
+ *
+ * @return void
+ */
+public function foo(&$tokens, $tokenizer, $eolChar)
+{
+
+}//end foo()
+
+/**
+ * Gettext.
+ *
+ */
+public function _() {
+    return $foo;
+}
+
+class Baz {
+    /**
+     * The PHP5 constructor
+     *
+     * No return tag
+     */
+    public function __construct() {
+
+    }
+}
+
+/**
+ * Complete a step.
+ *
+ * @param string $status Status of step to complete.
+ * @param array  $array  Array.
+ * @param string $note   Optional note.
+ *
+ * @return void
+ */
+public function completeStep($status, array $array = [Class1::class, 'test'], $note = '') {
+    echo 'foo';
+}
+
+/**
+ * Variadic function.
+ *
+ * @param string $name1    Comment.
+ * @param string ...$name2 Comment.
+ *
+ * @return void
+ */
+public function myFunction(string $name1, string ...$name2) {
+}
+
+
+/**
+ * Variadic function.
+ *
+ * @param string $name1 Comment.
+ * @param string $name2 Comment.
+ *
+ * @return void
+ */
+public function myFunction(string $name1, string ...$name2) {
+}

@@ -79,4 +79,9 @@ function myFunction()
 /*
     [^\'"]
 */
-?>
+
+// http://www.google.com
+
+// Base config function.
+
+// function ()

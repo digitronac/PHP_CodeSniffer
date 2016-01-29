@@ -3,6 +3,8 @@ $size = sizeof($array);
 $size = count($array);
 delete($filepath);
 unset($filepath);
+$size = \sizeof($array);
+$size = \my\ns\sizeof('abc');($array);
 
 // No errors thrown for class methods.
 $size = MyClass::sizeof($array);
@@ -48,5 +50,8 @@ class RightSideVisTest {
 namespace Something\sizeof;
 $var = new Sizeof();
 class SizeOf implements Something {}
+
+function mymodule_form_callback(SizeOf $sizeof) {
+}
 
 ?>

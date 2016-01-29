@@ -1,4 +1,24 @@
 <?php
+/**
+* Comment
+*/
+
+
+include $blah;
+
+
+/**
+* Comment
+*/
+
+
+/**
+* Comment
+*/
+function foo()
+{
+}//end foo()
+
 function func1() {
 
 }//end func1()
@@ -249,4 +269,30 @@ $callback = function ($bar) use ($foo)
             {
                 $bar += $foo;
             };
-?>
+
+class MyClass
+{
+    function func1() {
+    }
+}
+
+
+function test() {
+
+}//end test()
+
+
+if ($foo) {
+    /**
+     * Comment
+     */
+    function foo() {
+        // Code here
+    }
+    /**
+     * Comment
+     */
+    function bar() {
+        // Code here
+    }
+}

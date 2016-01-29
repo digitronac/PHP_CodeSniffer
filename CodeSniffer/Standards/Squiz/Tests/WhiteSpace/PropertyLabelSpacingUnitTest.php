@@ -38,16 +38,17 @@ class Squiz_Tests_WhiteSpace_PropertyLabelSpacingUnitTest extends AbstractSniffU
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
         return array(
                 2  => 1,
-                8  => 2,
-                9  => 1,
-                11 => 1,
-                17 => 1,
+                4  => 1,
+                9  => 2,
+                10 => 1,
+                12 => 1,
+                18 => 1,
                );
 
     }//end getErrorList()
@@ -59,7 +60,7 @@ class Squiz_Tests_WhiteSpace_PropertyLabelSpacingUnitTest extends AbstractSniffU
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {
@@ -69,5 +70,3 @@ class Squiz_Tests_WhiteSpace_PropertyLabelSpacingUnitTest extends AbstractSniffU
 
 
 }//end class
-
-?>

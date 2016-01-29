@@ -38,7 +38,7 @@ class Generic_Tests_Functions_OpeningFunctionBraceBsdAllmanUnitTest extends Abst
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
@@ -62,6 +62,10 @@ class Generic_Tests_Functions_OpeningFunctionBraceBsdAllmanUnitTest extends Abst
                 122 => 1,
                 128 => 1,
                 155 => 1,
+                158 => 1,
+                164 => 1,
+                168 => 1,
+                172 => 1,
                );
 
     }//end getErrorList()
@@ -73,7 +77,7 @@ class Generic_Tests_Functions_OpeningFunctionBraceBsdAllmanUnitTest extends Abst
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {
@@ -83,5 +87,3 @@ class Generic_Tests_Functions_OpeningFunctionBraceBsdAllmanUnitTest extends Abst
 
 
 }//end class
-
-?>

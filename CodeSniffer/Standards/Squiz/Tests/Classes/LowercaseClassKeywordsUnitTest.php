@@ -38,7 +38,7 @@ class Squiz_Tests_Classes_LowercaseClassKeywordsUnitTest extends AbstractSniffUn
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
@@ -46,14 +46,10 @@ class Squiz_Tests_Classes_LowercaseClassKeywordsUnitTest extends AbstractSniffUn
                    2  => 3,
                    3  => 3,
                    4  => 1,
+                   5  => 1,
                    9  => 1,
                    10 => 1,
                   );
-
-        // The trait test will only work in PHP versions where traits exist.
-        if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
-            $errors[5] = 1;
-        }
 
         return $errors;
 
@@ -66,7 +62,7 @@ class Squiz_Tests_Classes_LowercaseClassKeywordsUnitTest extends AbstractSniffUn
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

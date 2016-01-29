@@ -42,7 +42,7 @@ class Squiz_Tests_Commenting_FunctionCommentThrowTagUnitTest extends AbstractSni
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
@@ -50,12 +50,11 @@ class Squiz_Tests_Commenting_FunctionCommentThrowTagUnitTest extends AbstractSni
                 9   => 1,
                 21  => 1,
                 35  => 1,
-                46  => 1,
-                59  => 1,
-                60  => 1,
+                47  => 1,
+                61  => 2,
                 106 => 1,
                 123 => 1,
-                214 => 1,
+                215 => 1,
                );
 
     }//end getErrorList()
@@ -67,7 +66,7 @@ class Squiz_Tests_Commenting_FunctionCommentThrowTagUnitTest extends AbstractSni
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {
@@ -77,5 +76,3 @@ class Squiz_Tests_Commenting_FunctionCommentThrowTagUnitTest extends AbstractSni
 
 
 }//end class
-
-?>

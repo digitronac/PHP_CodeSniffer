@@ -228,5 +228,51 @@ class Foo {
     public function bar() {
         throw new Exception();
     }
+
+    /**
+     * Returns information for a test.
+     *
+     * This info includes parameters, their valid values.
+     *
+     * @param integer $projectid Id of the project.
+     *
+     * @return array
+     * @throws ChannelException If the project is invalid.
+     */
+    public static function getTestInfo($projectid=NULL)
+    {
+        try {
+            DAL::beginTransaction();
+            DAL::commit();
+        } catch (DALException $e) {
+            DAL::rollBack();
+            throw new ChannelException($e);
+        }
+    }
 }
-?>
+
+class Test
+{
+    /**
+     * Folder name.
+     *
+     * @var string
+     */
+    protected $folderName;
+
+    protected function setUp()
+    {
+        parent::setUp();
+
+        if ( !strlen($this->folderName) ) {
+            throw new \RuntimeException('The $this->folderName must be specified before proceeding.');
+        }
+    }
+
+    /*
+     *
+     */
+    protected function foo()
+    {
+    }
+}

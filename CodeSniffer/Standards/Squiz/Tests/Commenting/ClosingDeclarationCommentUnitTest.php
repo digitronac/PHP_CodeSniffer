@@ -38,7 +38,7 @@ class Squiz_Tests_Commenting_ClosingDeclarationCommentUnitTest extends AbstractS
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
@@ -50,6 +50,7 @@ class Squiz_Tests_Commenting_ClosingDeclarationCommentUnitTest extends AbstractS
                 59 => 1,
                 63 => 1,
                 67 => 1,
+                79 => 1,
                );
 
     }//end getErrorList()
@@ -61,7 +62,7 @@ class Squiz_Tests_Commenting_ClosingDeclarationCommentUnitTest extends AbstractS
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

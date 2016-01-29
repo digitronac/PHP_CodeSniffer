@@ -38,7 +38,7 @@ class Generic_Tests_Functions_OpeningFunctionBraceKernighanRitchieUnitTest exten
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
@@ -56,6 +56,10 @@ class Generic_Tests_Functions_OpeningFunctionBraceKernighanRitchieUnitTest exten
                 82  => 1,
                 87  => 1,
                 104 => 1,
+                119 => 1,
+                123 => 1,
+                127 => 1,
+                132 => 1,
                );
 
     }//end getErrorList()
@@ -67,7 +71,7 @@ class Generic_Tests_Functions_OpeningFunctionBraceKernighanRitchieUnitTest exten
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {
@@ -77,5 +81,3 @@ class Generic_Tests_Functions_OpeningFunctionBraceKernighanRitchieUnitTest exten
 
 
 }//end class
-
-?>

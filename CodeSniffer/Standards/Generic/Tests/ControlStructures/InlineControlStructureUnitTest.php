@@ -40,20 +40,35 @@ class Generic_Tests_ControlStructures_InlineControlStructureUnitTest extends Abs
      *
      * @param string $testFile The name of the file being tested.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList($testFile='InlineControlStructureUnitTest.inc')
     {
         switch ($testFile) {
         case 'InlineControlStructureUnitTest.inc':
             return array(
-                    3  => 1,
-                    7  => 1,
-                    11 => 1,
-                    13 => 1,
-                    15 => 1,
-                    17 => 1,
-                    23 => 1,
+                    3   => 1,
+                    7   => 1,
+                    11  => 1,
+                    13  => 1,
+                    15  => 1,
+                    17  => 1,
+                    23  => 1,
+                    42  => 1,
+                    43  => 1,
+                    45  => 1,
+                    46  => 1,
+                    49  => 1,
+                    62  => 1,
+                    66  => 1,
+                    78  => 1,
+                    120 => 1,
+                    128 => 1,
+                    134 => 1,
+                    142 => 1,
+                    143 => 1,
+                    144 => 1,
+                    150 => 1,
                    );
             break;
         case 'InlineControlStructureUnitTest.js':
@@ -63,6 +78,7 @@ class Generic_Tests_ControlStructures_InlineControlStructureUnitTest extends Abs
                     11 => 1,
                     13 => 1,
                     15 => 1,
+                    21 => 1,
                    );
             break;
         default:
@@ -79,7 +95,7 @@ class Generic_Tests_ControlStructures_InlineControlStructureUnitTest extends Abs
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

@@ -38,13 +38,12 @@ class Squiz_Tests_Commenting_BlockCommentUnitTest extends AbstractSniffUnitTest
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
         $errors = array(
                    8   => 1,
-                   19  => 1,
                    20  => 1,
                    24  => 1,
                    30  => 1,
@@ -62,24 +61,17 @@ class Squiz_Tests_Commenting_BlockCommentUnitTest extends AbstractSniffUnitTest
                    65  => 1,
                    68  => 1,
                    70  => 1,
+                   72  => 1,
                    75  => 1,
                    84  => 1,
-                   85  => 2,
-                   86  => 1,
                    87  => 1,
                    89  => 1,
                    92  => 1,
                    111 => 1,
                    159 => 1,
+                   181 => 1,
+                   188 => 1,
                   );
-
-        // The trait tests will only work in PHP version where traits exist and
-        // will throw errors in earlier versions.
-        if (version_compare(PHP_VERSION, '5.4.0') < 0) {
-            $errors[170] = 2;
-            $errors[171] = 1;
-            $errors[172] = 2;
-        }
 
         return $errors;
 
@@ -92,7 +84,7 @@ class Squiz_Tests_Commenting_BlockCommentUnitTest extends AbstractSniffUnitTest
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

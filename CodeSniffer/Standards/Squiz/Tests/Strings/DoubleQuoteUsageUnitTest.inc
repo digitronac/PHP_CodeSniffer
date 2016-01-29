@@ -17,4 +17,13 @@ $string = "\0";
 
 $x = "bar = '$z',
 baz = '" . $a . "'...$x";
-?>
+
+$string = "Hello
+there";
+$string = 'Hello
+there';
+
+$string = "\123 \234"."\u123"."\e";
+
+echo "window.location = \"".$url."\";\n";
+echo ""

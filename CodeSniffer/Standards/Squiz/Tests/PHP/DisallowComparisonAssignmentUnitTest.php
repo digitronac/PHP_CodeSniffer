@@ -38,7 +38,7 @@ class Squiz_Tests_PHP_DisallowComparisonAssignmentUnitTest extends AbstractSniff
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
@@ -49,6 +49,8 @@ class Squiz_Tests_PHP_DisallowComparisonAssignmentUnitTest extends AbstractSniff
                 7  => 1,
                 8  => 1,
                 10 => 1,
+                52 => 1,
+                53 => 1,
                );
 
     }//end getErrorList()
@@ -60,7 +62,7 @@ class Squiz_Tests_PHP_DisallowComparisonAssignmentUnitTest extends AbstractSniff
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

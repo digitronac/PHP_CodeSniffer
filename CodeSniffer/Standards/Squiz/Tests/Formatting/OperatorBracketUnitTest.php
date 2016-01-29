@@ -40,7 +40,7 @@ class Squiz_Tests_Formatting_OperatorBracketUnitTest extends AbstractSniffUnitTe
      *
      * @param string $testFile The name of the file being tested.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList($testFile='OperatorBracketUnitTest.inc')
     {
@@ -74,22 +74,27 @@ class Squiz_Tests_Formatting_OperatorBracketUnitTest extends AbstractSniffUnitTe
                     90  => 1,
                     109 => 1,
                     130 => 1,
+                    134 => 1,
+                    135 => 2,
+                    137 => 1,
+                    139 => 1,
                    );
             break;
         case 'OperatorBracketUnitTest.js':
             return array(
-                    5  => 1,
-                    8  => 1,
-                    11 => 1,
-                    14 => 1,
-                    24 => 1,
-                    30 => 1,
-                    33 => 1,
-                    36 => 1,
-                    39 => 1,
-                    46 => 1,
-                    47 => 1,
-                    63 => 1,
+                    5   => 1,
+                    8   => 1,
+                    11  => 1,
+                    14  => 1,
+                    24  => 1,
+                    30  => 1,
+                    33  => 1,
+                    36  => 1,
+                    39  => 1,
+                    46  => 1,
+                    47  => 1,
+                    63  => 1,
+                    108 => 1,
                    );
              break;
         default:
@@ -106,7 +111,7 @@ class Squiz_Tests_Formatting_OperatorBracketUnitTest extends AbstractSniffUnitTe
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

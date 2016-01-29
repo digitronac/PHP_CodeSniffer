@@ -1,8 +1,11 @@
 <?php
-somefunction($foo, $bar, [
+
+// ok
+somefunction1($foo, $bar, [
     // ...
 ], $baz);
 
+// ok
 $app->get('/hello/{name}', function ($name) use ($app) {
     return 'Hello '.$app->escape($name);
 }, array(
@@ -11,12 +14,14 @@ $app->get('/hello/{name}', function ($name) use ($app) {
     '3',
 ));
 
-somefunction($foo, $bar, [
+// error
+somefunction2($foo, $bar, [
     // ...
     ],
 $baz);
 
-somefunction(
+// ok
+somefunction3(// ...
     $foo,
     $bar,
     [
@@ -25,5 +30,89 @@ somefunction(
     $baz
 );
 
+// ok
+somefunction4('
+    this should not
+    give an error
+    because it\'s actually
+    one line call
+    with multi-line string
+');
 
-?>
+// ok
+somefunction5("hey,
+multi-line string with some
+extra args", $foo, 12);
+
+// error
+somefunction6('
+    but args in a new line
+    are not ok…
+    ',
+    $foo
+);
+
+$this->setFoo(true
+    ? 1
+    : 2, false, array(
+    'value',
+    'more'));
+
+$this->setFoo('some'
+    . 'long'
+    . 'text', 'string');
+
+foo(bar(), $a);
+foo();bar();
+
+foo(
+    true
+);
+
+myFunction(<<<END
+Foo
+END
+);
+
+var_dump(array(<<<'EOD'
+foobar!
+EOD
+));
+
+myFunction(<<<END
+Foo
+END
+, 'bar');
+
+myFunction(<<<END
+Foo
+END
+,
+'bar');
+
+if (array_filter(
+    $commands,
+    function ($cmd) use ($commandName) {
+        return ($cmd['name'] == $commandName);
+    }
+)) {
+    // Do something
+}
+
+myFunction(
+    'foo', (object) array(
+        'bar' => function ($x) {
+            return true;
+        },
+        'baz' => false
+    )
+);
+$qux = array_filter(
+    $quux, function ($x) {
+        return $x;
+    }
+);
+
+$this->listeners[] = $events->getSharedManager()->attach(
+        'Zend\Mvc\Application', MvcEvent::EVENT_DISPATCH, [$this, 'selectLayout'], 100
+);

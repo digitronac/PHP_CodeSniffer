@@ -16,7 +16,7 @@
 */
 
 /*
-    - This is not valid:
+    - This is valid:
    Not indented correctly.
 */
 
@@ -71,7 +71,7 @@ $code = 'should not be here';
     either.
 **/
 
-/**
+/*
     no capital
     letter.
 */
@@ -167,7 +167,7 @@ switch ($var) {
 }//end switch
 
 /**
- * Comment should be ignored in PHP 5.4.
+ * Comment should be ignored in PHP < 5.4.
  *
  */
 trait MyTrait {
@@ -178,4 +178,24 @@ trait MyTrait {
     这是一条测试评论.
 */
 
-?>
+/*Channels::includeSystem('Permission');
+if (Permission::hasPermission($projectid, 'project.metadata.add') === FALSE) {
+    throw new PermissionException(_('You do not have permission to add metadata field'));
+}*/
+
+/*
+    Comment goes here
+*/
+$two = (1 + 1);  // I'm not a comment closer!
+
+class Foo
+{
+
+    /**
+     * Comment here.
+     *
+     * @var array
+     */
+    var $bar = array();
+
+}

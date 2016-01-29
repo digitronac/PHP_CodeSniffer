@@ -2,12 +2,12 @@
 );
 test();
 test($arg, $arg2);
-test ();
+isset ();
 test( );
 test() ;
 test( $arg);
-test( $arg );
-test ( $arg );
+empty( $arg );
+eval ( $arg );
 
 if (is_array($arg) === true) {
 
@@ -134,12 +134,12 @@ array_map(
     function($x)
     {
         return trim($x, $y);
-    }, $foo
+    }, $foo,
     $array
 );
 
 $bar = new stdClass(
-    4, 5, 6
+    4, /* thanks */ 5, /* PSR-2 */ 6
 );
 
 public function doSomething()
@@ -177,8 +177,8 @@ foo(
     array(
         'this',
         'is',
-        'an',
-        'array'
+'an',
+'array'
     ),
     array(
         'this',
@@ -188,7 +188,9 @@ foo(
      ),
     function($x)
     {
-         return trim($x);
+        echo 'wee';
+
+        return trim($x);
    }
 );
 
@@ -208,8 +210,89 @@ function foo()
 
 // @codingStandardsChangeSetting PEAR.Functions.FunctionCallSignature requiredSpacesAfterOpen 1
 // @codingStandardsChangeSetting PEAR.Functions.FunctionCallSignature requiredSpacesBeforeClose 1
-ftest($arg, $arg2);
+test($arg, $arg2);
 test( $arg, $arg2 );
 test(  $arg, $arg2  );
 // @codingStandardsChangeSetting PEAR.Functions.FunctionCallSignature requiredSpacesAfterOpen 0
 // @codingStandardsChangeSetting PEAR.Functions.FunctionCallSignature requiredSpacesBeforeClose 0
+
+?>
+<script>
+    var foo = <?php echo bar(
+        'baz'
+    ); ?>;
+</script>
+    <script>
+        var foo = <?php echo bar(
+            'baz'
+        ); ?>;
+    </script>
+<?php
+
+array_walk(
+    $types,
+    function ($title, $type) {
+        $plural = 'all' !== $type ? 's' : '';
+        ?>
+        <li><a href="<?php esc_url('#tabs-documents-' . $type . $plural); ?>"><?php echo esc_html($title); ?></a></li>
+        <?php
+    }
+);
+
+$this->log(// ...
+    'error',
+    sprintf(
+        'Message: %s',
+        isset($e->getData()['object']['evidence_details'])
+            ? $e->getData()['object']['evidence_details']['due_by']
+            : ''
+    ),
+    array($e->getData()['object'])
+);
+
+?>
+<div>
+    <?php getTemplatePart(
+        'partials/web-page/carousel-slick/item-slide/header',
+        [
+            'class' => $class
+        ]
+    ); ?>
+</div>
+
+<?php
+if (true) {
+    $test = '
+   ' . function_0(
+        $argument_0
+    );
+}
+
+if (true) {
+    $test = '
+   ' . function_0(
+    $argument_0,
+           $argument_1
+    );
+}
+
+myFunction(
+    'foo', (object) array(
+        'bar' => function ($x) {
+            return true;
+        },
+        'baz' => false
+    )
+);
+$qux = array_filter(
+    $quux, function ($x) {
+        return $x;
+    }
+);
+
+array_filter(
+    [1, 2],
+    function ($i) : bool {
+        return $i === 0;
+    }
+);

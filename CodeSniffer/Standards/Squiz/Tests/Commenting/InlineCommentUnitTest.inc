@@ -110,4 +110,15 @@ final class MyClass
 trait MyTrait {
 
 }
-?>
+
+$foo = 'foo'; // Var set to foo.
+
+echo $foo;
+
+//	Comment here.
+echo $foo;
+
+/**
+ * Comments about the include
+ */
+include_once($blah);

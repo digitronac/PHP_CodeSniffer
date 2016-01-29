@@ -36,15 +36,15 @@ class Squiz_Tests_CSS_ClassDefinitionClosingBraceSpaceUnitTest extends AbstractS
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
         return array(
                 2  => 1,
                 11 => 1,
-                19 => 1,
                 44 => 1,
+                47 => 1,
                );
 
     }//end getErrorList()
@@ -56,7 +56,7 @@ class Squiz_Tests_CSS_ClassDefinitionClosingBraceSpaceUnitTest extends AbstractS
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

@@ -35,27 +35,15 @@ class Squiz_Tests_Commenting_ClassCommentUnitTest extends AbstractSniffUnitTest
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
         return array(
-                4   => 1,
-                15  => 1,
-                22  => 1,
-                25  => 1,
-                28  => 1,
-                49  => 1,
-                55  => 1,
-                64  => 2,
-                77  => 1,
-                88  => 1,
-                97  => 1,
-                99  => 1,
-                108 => 1,
-                110 => 1,
-                118 => 1,
-                128 => 1,
+                2  => 1,
+                15 => 1,
+                31 => 1,
+                54 => 1,
                );
 
     }//end getErrorList()
@@ -67,21 +55,19 @@ class Squiz_Tests_Commenting_ClassCommentUnitTest extends AbstractSniffUnitTest
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {
         return array(
+                29 => 1,
                 30 => 1,
-                31 => 1,
-                51 => 1,
-                68 => 1,
-                69 => 1,
+                50 => 1,
+                66 => 1,
+                67 => 1,
                );
 
     }//end getWarningList()
 
 
 }//end class
-
-?>

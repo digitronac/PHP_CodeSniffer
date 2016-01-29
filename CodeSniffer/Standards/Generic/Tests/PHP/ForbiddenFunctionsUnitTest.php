@@ -38,20 +38,15 @@ class Generic_Tests_PHP_ForbiddenFunctionsUnitTest extends AbstractSniffUnitTest
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
         $errors = array(
                    2 => 1,
                    4 => 1,
+                   6 => 1,
                   );
-
-        // The trait insteadof test will only work in PHP versions where traits exist
-        // and will throw errors in earlier versions.
-        if (version_compare(PHP_VERSION, '5.4.0') < 0) {
-            $errors[44] = 2;
-        }
 
         return $errors;
 
@@ -64,7 +59,7 @@ class Generic_Tests_PHP_ForbiddenFunctionsUnitTest extends AbstractSniffUnitTest
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

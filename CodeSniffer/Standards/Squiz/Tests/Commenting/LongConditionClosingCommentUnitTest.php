@@ -40,7 +40,7 @@ class Squiz_Tests_Commenting_LongConditionClosingCommentUnitTest extends Abstrac
      *
      * @param string $testFile The name of the file being tested.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList($testFile='LongConditionClosingCommentUnitTest.inc')
     {
@@ -67,6 +67,7 @@ class Squiz_Tests_Commenting_LongConditionClosingCommentUnitTest extends Abstrac
                     601 => 1,
                     629 => 1,
                     663 => 1,
+                    765 => 1,
                    );
             break;
         case 'LongConditionClosingCommentUnitTest.js':
@@ -99,7 +100,7 @@ class Squiz_Tests_Commenting_LongConditionClosingCommentUnitTest extends Abstrac
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

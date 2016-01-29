@@ -38,7 +38,7 @@ class Generic_Tests_Strings_UnnecessaryStringConcatUnitTest extends AbstractSnif
      *
      * @param string $testFile The name of the file being tested.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList($testFile='UnnecessaryStringConcatUnitTest.inc')
     {
@@ -49,6 +49,8 @@ class Generic_Tests_Strings_UnnecessaryStringConcatUnitTest extends AbstractSnif
                     6  => 1,
                     9  => 1,
                     12 => 1,
+                    19 => 1,
+                    20 => 1,
                    );
             break;
         case 'UnnecessaryStringConcatUnitTest.js':
@@ -56,6 +58,8 @@ class Generic_Tests_Strings_UnnecessaryStringConcatUnitTest extends AbstractSnif
                     1  => 1,
                     8  => 1,
                     11 => 1,
+                    14 => 1,
+                    15 => 1,
                    );
             break;
         default:
@@ -72,7 +76,7 @@ class Generic_Tests_Strings_UnnecessaryStringConcatUnitTest extends AbstractSnif
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

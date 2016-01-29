@@ -40,7 +40,7 @@ class Generic_Tests_PHP_LowerCaseConstantUnitTest extends AbstractSniffUnitTest
      *
      * @param string $testFile The name of the file being tested.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList($testFile='LowerCaseConstantUnitTest.inc')
     {
@@ -59,8 +59,8 @@ class Generic_Tests_PHP_LowerCaseConstantUnitTest extends AbstractSniffUnitTest
                     42 => 1,
                     47 => 1,
                     48 => 1,
-                    67 => 1,
-                    68 => 1,
+                    70 => 1,
+                    71 => 1,
                    );
         break;
         case 'LowerCaseConstantUnitTest.js':
@@ -89,7 +89,7 @@ class Generic_Tests_PHP_LowerCaseConstantUnitTest extends AbstractSniffUnitTest
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

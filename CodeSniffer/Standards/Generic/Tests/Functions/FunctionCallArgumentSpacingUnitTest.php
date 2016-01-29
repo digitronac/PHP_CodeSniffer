@@ -38,7 +38,7 @@ class Generic_Tests_Functions_FunctionCallArgumentSpacingUnitTest extends Abstra
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
@@ -56,7 +56,9 @@ class Generic_Tests_Functions_FunctionCallArgumentSpacingUnitTest extends Abstra
                 46 => 2,
                 79 => 1,
                 82 => 1,
+                93 => 1,
                );
+
 
     }//end getErrorList()
 
@@ -67,7 +69,7 @@ class Generic_Tests_Functions_FunctionCallArgumentSpacingUnitTest extends Abstra
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {
@@ -77,5 +79,3 @@ class Generic_Tests_Functions_FunctionCallArgumentSpacingUnitTest extends Abstra
 
 
 }//end class
-
-?>

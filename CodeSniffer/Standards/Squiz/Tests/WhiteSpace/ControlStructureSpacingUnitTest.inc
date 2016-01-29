@@ -137,6 +137,26 @@ switch ($moo)
     break;
 }
 
+do {
+}
+while (true);
+
+try {
+    // Something
+} catch (Exception $e) {
+    // Something
+}
+
+try {
+
+    // Something
+
+} catch (Exception $e) {
+
+    // Something
+
+}
+
 if ($one) {
 }
 elseif ($two) {
@@ -145,4 +165,56 @@ elseif ($two) {
 else if ($three) {
 } // else do something
 else {
+}
+
+if ($one) {
+
+}
+
+do {
+    echo 'hi';
+} while (  $blah  );
+
+if ($one) {
+}
+// No blank line here.
+if ($two) {
+}
+
+switch ($moo)
+{
+    case 'blar':
+        if ($moo === 'blar2') {
+            $moo = 'blar'
+        }
+
+    return $moo;
+}
+
+try {
+    // Something
+}
+catch (Exception $e) {
+    // Something
+}
+
+if ($foo) {
+
+
+    /**
+     * Comment
+     */
+    function foo() {
+        // Code here
+    }
+
+
+    /**
+     * Comment
+     */
+    class bar() {
+
+    }//end class
+
+
 }

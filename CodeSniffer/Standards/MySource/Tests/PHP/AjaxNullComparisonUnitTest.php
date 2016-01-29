@@ -36,18 +36,11 @@ class MySource_Tests_PHP_AjaxNullComparisonUnitTest extends AbstractSniffUnitTes
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
-        return array(
-                37  => 1,
-                49  => 1,
-                60  => 1,
-                73  => 1,
-                88  => 1,
-                118 => 1,
-               );
+        return array();
 
     }//end getErrorList()
 
@@ -58,11 +51,18 @@ class MySource_Tests_PHP_AjaxNullComparisonUnitTest extends AbstractSniffUnitTes
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {
-        return array();
+        return array(
+                37  => 1,
+                49  => 1,
+                60  => 1,
+                73  => 1,
+                88  => 1,
+                118 => 1,
+               );
 
     }//end getWarningList()
 

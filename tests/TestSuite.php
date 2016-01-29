@@ -13,10 +13,6 @@
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
 
-if (class_exists('PHPUnit_Framework_TestSuite', false) === false) {
-    require_once 'PHPUnit/Framework/TestSuite.php';
-}
-
 /**
  * A PHP_CodeSniffer specific test suite for PHPUnit.
  *
@@ -45,14 +41,26 @@ class PHP_CodeSniffer_TestSuite extends PHPUnit_Framework_TestSuite
      */
     public function run(PHPUnit_Framework_TestResult $result=null, $filter=false)
     {
+        $GLOBALS['PHP_CODESNIFFER_SNIFF_CODES']   = array();
+        $GLOBALS['PHP_CODESNIFFER_FIXABLE_CODES'] = array();
+
         spl_autoload_register(array('PHP_CodeSniffer', 'autoload'));
         $result = parent::run($result, $filter);
         spl_autoload_unregister(array('PHP_CodeSniffer', 'autoload'));
+
+        $codes = count($GLOBALS['PHP_CODESNIFFER_SNIFF_CODES']);
+
+        echo PHP_EOL.PHP_EOL;
+        echo "Tests generated $codes unique error codes";
+        if ($codes > 0) {
+            $fixes = count($GLOBALS['PHP_CODESNIFFER_FIXABLE_CODES']);
+            $percent = round(($fixes / $codes * 100), 2);
+            echo "; $fixes were fixable ($percent%)";
+        }
+
         return $result;
 
     }//end run()
 
 
 }//end class
-
-?>

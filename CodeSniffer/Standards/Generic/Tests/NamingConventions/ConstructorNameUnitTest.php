@@ -36,15 +36,14 @@ class Generic_Tests_NamingConventions_ConstructorNameUnitTest extends AbstractSn
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
         return array(
-                5  => 1,
                 6  => 1,
                 11 => 1,
-                20 => 1,
+                47 => 1,
                );
 
     }//end getErrorList()
@@ -56,7 +55,7 @@ class Generic_Tests_NamingConventions_ConstructorNameUnitTest extends AbstractSn
      * The key of the array should represent the line number and the value
      * should represent the number of warnings that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getWarningList()
     {

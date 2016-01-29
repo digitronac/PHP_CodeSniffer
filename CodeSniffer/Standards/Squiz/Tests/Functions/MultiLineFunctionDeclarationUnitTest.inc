@@ -97,4 +97,58 @@ usort(
         // body
     }
 );
-?>
+
+function myFunction(
+    $firstParameter,$secondParameter=[1,2,3],$third=null
+) {
+}
+
+if (array_filter(
+    $commands,
+    function ($cmd) use ($commandName) {
+        return ($cmd['name'] == $commandName);
+    }
+)) {
+    // Do something
+}
+
+function foo( // comment
+    $bar,
+    $baz
+) { // comment
+    // ...
+}
+
+function foo($bar = [
+    1,
+    2,
+], $foo)
+{
+    // body
+}
+
+$foo = function ($bar = [
+    1,
+    2,
+]) use ($longVar1, $longerVar2) {
+    // body
+};
+
+function foo($bar = [
+    1,
+    2,
+],
+$foo)
+{
+    // body
+}
+
+function foo(
+    $bar = [
+        1,
+        2,
+    ],
+    $foo
+) {
+    // body
+}
