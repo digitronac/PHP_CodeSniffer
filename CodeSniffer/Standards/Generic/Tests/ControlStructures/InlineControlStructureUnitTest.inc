@@ -154,3 +154,35 @@ switch ($type) {
         }
     break;
 }
+
+foreach ($sql as $s)
+        if (!$this->execute) echo "<pre>",$s.";\n</pre>";
+        else {
+            $ok = $this->connDest->Execute($s);
+            if (!$ok)
+                if ($this->neverAbort) $ret = false;
+                else return false;
+        }
+
+if ($bar)
+    if ($foo) echo 'hi'; // lol
+
+if ($level == 'district')
+    \DB::update(<<<EOD
+some
+text
+here
+EOD
+    );
+
+if ($level == 'district')
+    $var = <<<EOD
+some
+text
+here
+EOD;
+
+if ($a && $a === Foo::VARIABLE && ($a === Foo::METHOD || $a === Foo::FUNCTION))
+    echo 'hi';
+
+$out = array_map(function ($test) { if ($test) return 1; else return 2; }, $input); // comment

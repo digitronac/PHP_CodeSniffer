@@ -28,6 +28,13 @@ class PHP_CodeSniffer_Tokenizers_JS
 {
 
     /**
+     * If TRUE, files that appear to be minified will not be processed.
+     *
+     * @var boolean
+     */
+    public $skipMinified = true;
+
+    /**
      * A list of tokens that are allowed to open a scope.
      *
      * This array also contains information about what kind of token the scope
@@ -243,10 +250,7 @@ class PHP_CodeSniffer_Tokenizers_JS
 
 
     /**
-     * Creates an array of tokens when given some PHP code.
-     *
-     * Starts by using token_get_all() but does a lot of extra processing
-     * to insert information about the context of the token.
+     * Creates an array of tokens when given some JS code.
      *
      * @param string $string  The string to tokenize.
      * @param string $eolChar The EOL character to use for splitting strings.
@@ -512,7 +516,14 @@ class PHP_CodeSniffer_Tokenizers_JS
                         echo "\t\t* look ahead found nothing *".PHP_EOL;
                     }
 
-                    $value    = $this->tokenValues[strtolower($buffer)];
+                    $value = $this->tokenValues[strtolower($buffer)];
+
+                    if ($value === 'T_FUNCTION' && $buffer !== 'function') {
+                        // The function keyword needs to be all lowercase or else
+                        // it is just a function called "Function".
+                        $value = 'T_STRING';
+                    }
+
                     $tokens[] = array(
                                  'code'    => constant($value),
                                  'type'    => $value,
@@ -814,16 +825,15 @@ class PHP_CodeSniffer_Tokenizers_JS
                 if ($newContent !== '' && $newContent !== '.') {
                     $finalTokens[($newStackPtr - 1)]['content'] = $newContent;
                     if (ctype_digit($newContent) === true) {
-                        $finalTokens[($newStackPtr - 1)]['code']
-                            = constant('T_LNUMBER');
+                        $finalTokens[($newStackPtr - 1)]['code'] = constant('T_LNUMBER');
                         $finalTokens[($newStackPtr - 1)]['type'] = 'T_LNUMBER';
                     } else {
-                        $finalTokens[($newStackPtr - 1)]['code']
-                            = constant('T_DNUMBER');
+                        $finalTokens[($newStackPtr - 1)]['code'] = constant('T_DNUMBER');
                         $finalTokens[($newStackPtr - 1)]['type'] = 'T_DNUMBER';
                     }
 
                     $stackPtr--;
+                    continue;
                 } else {
                     $stackPtr = $oldStackPtr;
                 }
@@ -875,6 +885,9 @@ class PHP_CodeSniffer_Tokenizers_JS
     {
         $beforeTokens = array(
                          T_EQUAL               => true,
+                         T_IS_NOT_EQUAL        => true,
+                         T_IS_IDENTICAL        => true,
+                         T_IS_NOT_IDENTICAL    => true,
                          T_OPEN_PARENTHESIS    => true,
                          T_OPEN_SQUARE_BRACKET => true,
                          T_RETURN              => true,
@@ -885,6 +898,8 @@ class PHP_CodeSniffer_Tokenizers_JS
                          T_COMMA               => true,
                          T_COLON               => true,
                          T_TYPEOF              => true,
+                         T_INLINE_THEN         => true,
+                         T_INLINE_ELSE         => true,
                         );
 
         $afterTokens = array(
@@ -894,6 +909,7 @@ class PHP_CodeSniffer_Tokenizers_JS
                         ';'      => true,
                         ' '      => true,
                         '.'      => true,
+                        ':'      => true,
                         $eolChar => true,
                        );
 

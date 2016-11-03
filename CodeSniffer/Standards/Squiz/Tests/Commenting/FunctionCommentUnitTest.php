@@ -111,18 +111,23 @@ class Squiz_Tests_Commenting_FunctionCommentUnitTest extends AbstractSniffUnitTe
                    669 => 1,
                    744 => 1,
                    748 => 1,
+                   789 => 1,
+                   792 => 1,
+                   794 => 1,
+                   797 => 1,
+                   801 => 1,
                   );
 
         // The yield tests will only work in PHP versions where yield exists and
         // will throw errors in earlier versions.
-        if (version_compare(PHP_VERSION, '5.5.0') < 0) {
+        if (PHP_VERSION_ID < 50500) {
             $errors[676] = 1;
         } else {
             $errors[688] = 1;
         }
 
         // Scalar type hints only work from PHP 7 onwards.
-        if (version_compare(PHP_VERSION, '7.0.0') >= 0) {
+        if (PHP_VERSION_ID >= 70000) {
             $errors[17]  = 1;
             $errors[143] = 3;
             $errors[161] = 2;
