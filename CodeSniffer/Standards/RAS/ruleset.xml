@@ -7,8 +7,8 @@
  <rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
  <rule ref="Generic.PHP.DisallowShortOpenTag"/>
  <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
- <rule ref="PEAR.Classes.ClassDeclaration"/>
- <rule ref="RAS.ControlStructures.ControlSignature"/>
+ <rule ref="PSR2.Classes.ClassDeclaration"/>
+ <rule ref="PSR2.ControlStructures.ControlSignature"/>
  <rule ref="PEAR.Functions.ValidDefaultValue"/>
  <rule ref="PEAR.WhiteSpace.ScopeClosingBrace"/>
  <rule ref="Squiz.Functions.GlobalFunction"/>
