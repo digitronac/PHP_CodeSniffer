@@ -602,7 +602,10 @@ class PHP_CodeSniffer_File
         // If short open tags are off but the file being checked uses
         // short open tags, the whole content will be inline HTML
         // and nothing will be checked. So try and handle this case.
-        if ($foundCode === false && $this->tokenizerType === 'PHP') {
+        // We don't show this error for STDIN because we can't be sure the content
+        // actually came directly from the user. It could be something like
+        // refs from a Git pre-push hook.
+        if ($foundCode === false && $this->tokenizerType === 'PHP' && $this->_file !== 'STDIN') {
             $shortTags = (bool) ini_get('short_open_tag');
             if ($shortTags === false) {
                 $error = 'No PHP code was found in this file and short open tags are not allowed by this install of PHP. This file may be using short open tags but PHP does not allow them.';
@@ -1942,7 +1945,9 @@ class PHP_CodeSniffer_File
             // scope tokens. E.g., if (1) 1; 1 ? (1 ? 1 : 1) : 1;
             // If an IF statement below this one has an opener but no
             // keyword, the opener will be incorrectly assigned to this IF statement.
-            if (($currType === T_IF || $currType === T_ELSE)
+            // The same case also applies to USE statements, which don't have to have
+            // openers, so a following USE statement can cause an incorrect brace match.
+            if (($currType === T_IF || $currType === T_ELSE || $currType === T_USE)
                 && $opener === null
                 && $tokens[$i]['code'] === T_SEMICOLON
             ) {
@@ -2738,8 +2743,10 @@ class PHP_CodeSniffer_File
      * <code>
      *   0 => array(
      *         'name'              => '$var',  // The variable name.
-     *         'pass_by_reference' => false,   // Passed by reference.
-     *         'type_hint'         => string,  // Type hint for array or custom type
+     *         'content'           => string,  // The full content of the variable definition.
+     *         'pass_by_reference' => boolean, // Is the variable passed by reference?
+     *         'type_hint'         => string,  // The type hint for the variable.
+     *         'nullable_type'     => boolean, // Is the variable using a nullable type?
      *        )
      * </code>
      *
@@ -2764,13 +2771,15 @@ class PHP_CodeSniffer_File
 
         $vars            = array();
         $currVar         = null;
+        $paramStart      = ($opener + 1);
         $defaultStart    = null;
         $paramCount      = 0;
         $passByReference = false;
         $variableLength  = false;
         $typeHint        = '';
+        $nullableType    = false;
 
-        for ($i = ($opener + 1); $i <= $closer; $i++) {
+        for ($i = $paramStart; $i <= $closer; $i++) {
             // Check to see if this token has a parenthesis or bracket opener. If it does
             // it's likely to be an array which might have arguments in it. This
             // could cause problems in our parsing below, so lets just skip to the
@@ -2801,7 +2810,15 @@ class PHP_CodeSniffer_File
                 break;
             case T_ARRAY_HINT:
             case T_CALLABLE:
-                $typeHint = $this->_tokens[$i]['content'];
+                $typeHint .= $this->_tokens[$i]['content'];
+                break;
+            case T_SELF:
+            case T_PARENT:
+            case T_STATIC:
+                // Self is valid, the others invalid, but were probably intended as type hints.
+                if (isset($defaultStart) === false) {
+                    $typeHint .= $this->_tokens[$i]['content'];
+                }
                 break;
             case T_STRING:
                 // This is a string, so it may be a type hint, but it could
@@ -2838,6 +2855,12 @@ class PHP_CodeSniffer_File
                     $typeHint .= $this->_tokens[$i]['content'];
                 }
                 break;
+            case T_INLINE_THEN:
+                if ($defaultStart === null) {
+                    $nullableType = true;
+                    $typeHint    .= $this->_tokens[$i]['content'];
+                }
+                break;
             case T_CLOSE_PARENTHESIS:
             case T_COMMA:
                 // If it's null, then there must be no parameters for this
@@ -2846,8 +2869,9 @@ class PHP_CodeSniffer_File
                     continue;
                 }
 
-                $vars[$paramCount]         = array();
-                $vars[$paramCount]['name'] = $this->_tokens[$currVar]['content'];
+                $vars[$paramCount]            = array();
+                $vars[$paramCount]['name']    = $this->_tokens[$currVar]['content'];
+                $vars[$paramCount]['content'] = trim($this->getTokensAsString($paramStart, ($i - $paramStart)));
 
                 if ($defaultStart !== null) {
                     $vars[$paramCount]['default']
@@ -2860,12 +2884,15 @@ class PHP_CodeSniffer_File
                 $vars[$paramCount]['pass_by_reference'] = $passByReference;
                 $vars[$paramCount]['variable_length']   = $variableLength;
                 $vars[$paramCount]['type_hint']         = $typeHint;
+                $vars[$paramCount]['nullable_type']     = $nullableType;
 
                 // Reset the vars, as we are about to process the next parameter.
                 $defaultStart    = null;
+                $paramStart      = ($i + 1);
                 $passByReference = false;
                 $variableLength  = false;
                 $typeHint        = '';
+                $nullableType    = false;
 
                 $paramCount++;
                 break;
