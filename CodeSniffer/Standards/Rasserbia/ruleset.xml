@@ -33,7 +33,9 @@
     <rule ref="Squiz.Classes.DuplicateProperty" />
     <rule ref="Squiz.Classes.LowercaseClassKeywords" />
     <rule ref="Squiz.Classes.ValidClassName" />
-    <rule ref="Squiz.NamingConventions.ValidFunctionName" />
+    <rule ref="Squiz.NamingConventions.ValidFunctionName">
+        <exclude name = "Squiz.NamingConventions.ValidFunctionName.PrivateNoUnderscore" />
+    </rule>
     <rule ref="Squiz.Strings.DoubleQuoteUsage" />
     <rule ref="Squiz.WhiteSpace.CastSpacing" />
     <rule ref="Squiz.WhiteSpace.ControlStructureSpacing" />
